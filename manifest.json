@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Better Streamelements - BSE",
+    "version": "1.0",
+    "description": "An Enhancer for Streamelements.com - Use an inspired design from the Old SE, Changes some base things how SE works aswell as making an overall better User Experience.",
+    "permissions": ["activeTab", "storage"],
+    "background": {
+      "service_worker": "./src/data/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.streamelements.com/*"],
+        "css": ["./src/data/web/styles.css"],
+        "js": ["./src/data/web/content.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "./src/data/popup.html",
+      "default_icon": {
+        "16": "./src/icons/favicon-16x16.png",
+        "48": "./src/icons/favicon-48x48.png",
+        "128": "./src/icons/favicon-128x128.png"
+      }
+    }
+  }

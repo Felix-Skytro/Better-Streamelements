@@ -45,13 +45,6 @@ editLinks.forEach(function(link) {
 
 
     injectOVLeditor.textContent = `
-    
-
-    *{
-
-        color: #fff !important;
-
-    }
 
     md-option{
 
@@ -73,6 +66,13 @@ border: 1px solid rgba(132, 160, 190, 0.3);
     .md-subheader .md-subheader-inner{
 
             background: #1e1e1e;
+            color: #fff !important;
+
+    }
+
+    md-input-container label:not(.md-no-float):not(.md-container-ignore), md-input-container .md-placeholder{
+
+        color: #fff;
 
     }
 

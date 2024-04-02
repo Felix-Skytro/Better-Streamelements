@@ -88,6 +88,12 @@ border: 1px solid rgba(132, 160, 190, 0.3);
 
     }
 
+    .overlay-editor--grid{
+
+        background-color: transparent;
+
+    }
+
     .floating-actions__draggy-boi{
 
         display: none;

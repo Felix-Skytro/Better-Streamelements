@@ -1,10 +1,11 @@
 const root = {
-    disableRedesign: false
+    disableRedesign: false,
+    moderatingUser: ""
 };
 
 const HOST = window.location.href
 
-setTimeout(loadingscreen, 1500)
+setTimeout(loadingscreen, 100)
 
 
 function INJECT(){
@@ -17,17 +18,22 @@ function INJECT(){
     setTimeout(() => {
     console.log(editLinks)
 
-editLinks.forEach(function(link) {
+editLinks.forEach((link, index) => {
     link.setAttribute("target", "_self");
 
     console.log("Removed attribute from adress Element with the ID: " + link.id)
 
-    link.style.transition = "500ms"
-    link.style.border = "solid 2px #5684FD"
+    setTimeout(() => {
+
+    link.style.transition = "700ms"
+    link.style.transform = "scale(1.2)"
 
     setTimeout(() => {
-        link.style.border = "none"
+        link.style.transform = "scale(1)"
     }, 600)
+
+}, index * 80)
+
 });
 }, 300)
 
@@ -202,6 +208,19 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 
 }
 
+/*==========/ SE Logo /==========*/
+
+.se-ds-c-jXzmVb img{
+
+    position: relative;
+    right: 30px;
+    opacity: 0;
+
+    transition: 700ms cubic-bezier(0.83, 0, 0.17, 1);
+
+}
+
+
 /*==========/ Moderating User Wrapper /==========*/
 
 .se-ds-c-dKGoRf{
@@ -360,6 +379,22 @@ top: 10px;
 
 }
 
+/*==========/ Overlay Boxes Complete /==========*/
+
+.se-ds-c-hMQMGV{
+
+
+    position: relative;
+    left: 0px;
+    opacity: 1;
+
+    transition: none;
+
+
+}
+
+
+
 `;
 
 if(!root.disableRedesign){
@@ -379,6 +414,8 @@ var addOverlayButton;
 var moderatingUsername;
 var myOverlaysParagraph;
 
+var overlayBoxes;
+
 var favioriteStar;
 
 var menue;
@@ -386,13 +423,11 @@ var menue;
 var sideTitles;
 var sideEntrys;
 
+var SE_logo;
+
 var isModerating;
 
     setTimeout(() => {        
-        
-        
-
-        
         
         needDesign = document.querySelector(".se-ds-c-brlTBd")
         addOverlayButton = document.querySelector(".se-ds-c-bQUspK-iefzCPn-css")
@@ -403,6 +438,8 @@ var isModerating;
         favioriteStar = document.querySelector(".se-ds-c-fXjNNq")
         sideTitles = document.querySelectorAll(".se-ds-c-cCGRcV")
         sideEntrys = document.querySelectorAll(".se-ds-c-dMYLZc-fGanEZ-hasIcon-false")
+        SE_logo = document.querySelector(".se-ds-c-jXzmVb img")
+        overlayBoxes = document.querySelectorAll(".se-ds-c-hMQMGV")
 
         const bteSettings = document.createElement("div")
 
@@ -415,6 +452,7 @@ var isModerating;
 
         if(moderatingUsername){
             moderatingUsername.style.display = "none"
+            root.moderatingUser = moderatingUsername.innerHTML
         }
             
 
@@ -445,6 +483,40 @@ var isModerating;
 
                 INJECT()
 
+                setTimeout(() => {
+                    overlayBoxes.forEach((el, index) => {
+
+                        el.style.opacity = "0"
+                        el.style.left = "15px"
+                        el.style.transition = "400ms"
+                    })
+                }, 300)
+
+                setTimeout(() => {
+
+                    SE_logo.style.right = "0px"
+                    SE_logo.style.opacity = "1"
+
+
+
+                    overlayBoxes.forEach((el, index) => {
+                        setTimeout(() => {
+
+                            el.style.left = "0px"
+                            el.style.opacity = "1"
+
+                        }, index * 70)
+                    })
+
+                    setTimeout(() => {
+                        overlayBoxes.style.opacity = "1"
+                        overlayBoxes.style.left = "0px"
+                    }, overlayBoxes.length * 70)
+
+
+
+                }, 1000)
+
 
 
                 sideTitles[0].innerHTML = "Analysis"
@@ -471,31 +543,77 @@ var isModerating;
 
 
             const loaderBG = document.createElement("div")
-            const loaderProgress = document.createElement("div")
+            const loaderBG_secondary = document.createElement("div")
+            const loaderLogo = document.createElement("img")
+
+            loaderLogo.src = "https://cdn.streamelements.com/assets/homepage/SE_logo_600x129px_user_dashboard%403x.png"
+            loaderLogo.style.transform = "scale(1)"
+            loaderLogo.style.width = "60%"
+            loaderLogo.style.opacity = "0"
+            loaderLogo.style.transition = "5500ms cubic-bezier(0.83, 0, 0.17, 1)"
+            loaderLogo.style.position = "relative"
+            loaderLogo.style.bottom = "0px"
 
             loaderBG.style.width = "100%"
             loaderBG.style.height = "100%"
             loaderBG.style.position = "absolute"
-            loaderBG.style.left = "220px"
-            loaderBG.style.background = "#1e1e1e"
-            loaderBG.style.transition = "700ms cubic-bezier(0.83, 0, 0.17, 1)"
-            loaderBG.style.zIndex = "99"
+            loaderBG.style.left = "0"
+            loaderBG.style.top = "0"
+            loaderBG.style.background = "#0c0c0c"
+            loaderBG.style.transition = "900ms cubic-bezier(0.83, 0, 0.17, 1)"
+            loaderBG.style.zIndex = "999999"
+            loaderBG.style.display = "flex"
+            loaderBG.style.justifyContent = "center"
+            loaderBG.style.alignItems = "center"
+            loaderBG.style.overflow = "hidden"
+
+            loaderBG_secondary.style.width = "100%"
+            loaderBG_secondary.style.height = "100%"
+            loaderBG_secondary.style.position = "absolute"
+            loaderBG_secondary.style.left = "0"
+            loaderBG_secondary.style.bottom = "0"
+            loaderBG_secondary.style.background = "#1e1e1e"
+            loaderBG_secondary.style.transition = "900ms cubic-bezier(0.83, 0, 0.17, 1)"
+            loaderBG_secondary.style.zIndex = "999998"
 
 
+            loaderBG.appendChild(loaderLogo)
             document.body.appendChild(loaderBG)
+            document.body.appendChild(loaderBG_secondary)
+
+            setTimeout(() => {
+
+                loaderLogo.style.transform = "scale(0.3)"
+                loaderLogo.style.opacity = "0.9"
+
+            }, 100)
 
             setTimeout(() => {
 
 
                 loaderBG.style.height = "0%"
 
+                setTimeout(() => {
+                    loaderBG_secondary.style.height = "0%"
+
+
+                    loaderLogo.style.transition = "700ms cubic-bezier(0.83, 0, 0.17, 1)"
+                    loaderLogo.style.bottom = "150px"
+
+
+                }, 50)
+
 
                 setTimeout(() => {
                     loaderBG.remove()
-                }, 500)
+                }, 800)
+
+                setTimeout(() => {
+                    loaderBG_secondary.remove()
+                }, 950)
 
 
-            }, 5000)
+            }, 5500)
 
 
         }

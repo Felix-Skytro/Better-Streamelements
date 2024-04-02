@@ -1,5 +1,5 @@
 # Better Streamelements
-Restore the classic Streamelements design with selected new design elements using this Chrome extension.
+Better user experience because of DarkMode and more Animations!
 
 # Description
 Better SE makes some features to the Website to make a better user experience, also it changes some design elements to look a bit like the Old Streamelements Website

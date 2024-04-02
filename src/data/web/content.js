@@ -6,36 +6,25 @@ const root = {
 const HOST = window.location.href
 
 setTimeout(loadingscreen, 100)
-
+setTimeout(INJECT, 100)
 
 function INJECT(){
 
     const inject = document.createElement('style');
     const injectOVLeditor = document.createElement('style');
-    const editLinks = document.querySelectorAll('a[target="_blank"]');
 
 
-    setTimeout(() => {
-    console.log(editLinks)
+    setInterval(() => {
+
+        const editLinks = document.querySelectorAll('a[target="_blank"]');
 
 editLinks.forEach((link, index) => {
     link.setAttribute("target", "_self");
 
     console.log("Removed attribute from adress Element with the ID: " + link.id)
 
-    setTimeout(() => {
-
-    link.style.transition = "700ms"
-    link.style.transform = "scale(1.2)"
-
-    setTimeout(() => {
-        link.style.transform = "scale(1)"
-    }, 600)
-
-}, index * 80)
-
 });
-}, 300)
+}, 100)
 
 
 
@@ -484,61 +473,6 @@ var isModerating;
 
             }
 
-
-            setTimeout(() => {
-
-                INJECT()
-
-                setTimeout(() => {
-                    overlayBoxes.forEach((el, index) => {
-
-                        el.style.opacity = "0"
-                        el.style.left = "15px"
-                        el.style.transition = "400ms"
-                    })
-                }, 300)
-
-                setTimeout(() => {
-
-                    SE_logo.style.right = "0px"
-                    SE_logo.style.opacity = "1"
-
-
-
-                    overlayBoxes.forEach((el, index) => {
-                        setTimeout(() => {
-
-                            el.style.left = "0px"
-                            el.style.opacity = "1"
-
-                        }, index * 70)
-                    })
-
-                    setTimeout(() => {
-                        overlayBoxes.style.opacity = "1"
-                        overlayBoxes.style.left = "0px"
-                    }, overlayBoxes.length * 70)
-
-
-
-                }, 1000)
-
-
-
-                sideTitles[0].innerHTML = "Analysis"
-                sideTitles[1].innerHTML = "Overlays // Widgets"
-                sideTitles[2].innerHTML = "Revenue"
-                sideTitles[3].innerHTML = "SE Chatbot"
-                sideTitles[4].innerHTML = "Loyalty"
-                sideTitles[5].innerHTML = "More"
-
-                //sideEntrys[5].innerHTML = "Catalog"
-
-
-        
-            }, 500)
-
-
         }, 5000)
 
 
@@ -556,7 +490,7 @@ var isModerating;
             loaderLogo.style.transform = "scale(1)"
             loaderLogo.style.width = "60%"
             loaderLogo.style.opacity = "0"
-            loaderLogo.style.transition = "5500ms cubic-bezier(0.83, 0, 0.17, 1)"
+            loaderLogo.style.transition = "800ms cubic-bezier(0.83, 0, 0.17, 1)"
             loaderLogo.style.position = "relative"
             loaderLogo.style.bottom = "0px"
 
@@ -619,7 +553,67 @@ var isModerating;
                 }, 950)
 
 
-            }, 5500)
+            }, 1000)
+
+
+
+
+
+
+
+
+            setTimeout(() => {
+
+                
+
+                setTimeout(() => {
+                    overlayBoxes.forEach((el, index) => {
+
+                        el.style.opacity = "0"
+                        el.style.left = "15px"
+                        el.style.transition = "400ms"
+                    })
+                }, 300)
+
+                setTimeout(() => {
+
+                    SE_logo.style.right = "0px"
+                    SE_logo.style.opacity = "1"
+
+
+
+                    overlayBoxes.forEach((el, index) => {
+                        setTimeout(() => {
+
+                            el.style.left = "0px"
+                            el.style.opacity = "1"
+
+                        }, index * 70)
+                    })
+
+                    setTimeout(() => {
+                        overlayBoxes.style.opacity = "1"
+                        overlayBoxes.style.left = "0px"
+                    }, overlayBoxes.length * 70)
+
+
+
+                }, 1000)
+
+
+
+                sideTitles[0].innerHTML = "Analysis"
+                sideTitles[1].innerHTML = "Overlays // Widgets"
+                sideTitles[2].innerHTML = "Revenue"
+                sideTitles[3].innerHTML = "SE Chatbot"
+                sideTitles[4].innerHTML = "Loyalty"
+                sideTitles[5].innerHTML = "More"
+
+                //sideEntrys[5].innerHTML = "Catalog"
+
+
+        
+            }, 3500)
 
 
         }

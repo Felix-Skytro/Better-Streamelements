@@ -6,7 +6,7 @@ const root = {
 const HOST = window.location.href
 
 setTimeout(loadingscreen, 100)
-setTimeout(INJECT, 100)
+setTimeout(INJECT, 1500)
 
 function INJECT(){
 
@@ -409,6 +409,8 @@ var addOverlayButton;
 var moderatingUsername;
 var myOverlaysParagraph;
 
+var navbar;
+
 var overlayBoxes;
 
 var favioriteStar;
@@ -435,12 +437,15 @@ var isModerating;
         sideEntrys = document.querySelectorAll(".se-ds-c-dMYLZc-fGanEZ-hasIcon-false")
         SE_logo = document.querySelector(".se-ds-c-jXzmVb img")
         overlayBoxes = document.querySelectorAll(".se-ds-c-hMQMGV")
+        navbar = document.querySelector(".se-ds-c-ixfmhN-fPmhWw-layout-default")
 
         const bteSettings = document.createElement("div")
 
         bteSettings.classList.add("se-ds-c-fjkChu")
         bteSettings.classList.add("se-ds-c-enMZYc.se-ds-c-enMZYc")
         bteSettings.innerHTML = "BTE - Settings"
+
+        navbar.style.transition = "500ms"
 
         //menue.appendChild(bteSettings)
      
@@ -466,10 +471,12 @@ var isModerating;
             if(isModerating){
 
                 root.navColor = "#00d6a5"
+                navbar.style.background = root.navColor
 
             } else {
 
                 root.navColor = "#25242b"
+                navbar.style.background = root.navColor
 
             }
 
